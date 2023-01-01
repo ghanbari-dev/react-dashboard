@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React from 'react';
 import './App.css';
 
@@ -7,6 +8,9 @@ function App() {
       <div className='text-red-500'>
         hellow
       </div>
+      <Button>
+        aaaa
+      </Button>
     </div>
   );
 }
