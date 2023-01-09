@@ -33,5 +33,10 @@ export interface HeadCell {
   align?: "right" | "center" | "left";
   valueAlign?: "right" | "center" | "left";
   editable?: boolean;
-  sortable?:boolean;
+  sortable?: boolean;
 }
+
+export type getComparatorType = {
+  order: Order;
+  orderBy: keyof Data;
+};

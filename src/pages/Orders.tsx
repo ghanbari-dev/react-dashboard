@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../components";
-import TableTemplate from '../components/table/TableTemplate'
+import TableTemplate from "../components/table/TableTemplate";
 
 type Props = {};
 

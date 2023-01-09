@@ -128,7 +128,7 @@ const TableTemplate = ({
     }
   });
 
-  const [orderBy, setOrderBy] = useState<keyof Data>(
+  const [orderBy, setOrderBy] = useState(
     headKey ? headKey : headCells[0].id
   );
   const [selected, setSelected] = useState<readonly string[]>([]);
@@ -209,8 +209,7 @@ const TableTemplate = ({
     if (event.target.checked) {
       setSelectable(true);
       setActiveHead(true);
-    }
-    else {
+    } else {
       setSelectable(isSelectable);
       setActiveHead(isHeadActive);
     }
@@ -247,7 +246,7 @@ const TableTemplate = ({
               headCells={headCells}
             />
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(rows, getComparator({order, orderBy}))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
@@ -256,9 +255,6 @@ const TableTemplate = ({
                   return (
                     <TableRow
                       hover
-                      onClick={(event) =>
-                        selectable ? handleClick(event, row.name) : null
-                      }
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -268,6 +264,9 @@ const TableTemplate = ({
                       {selectable && (
                         <TableCell padding="checkbox">
                           <Checkbox
+                            onClick={(event) =>
+                              selectable ? handleClick(event, row.name) : null
+                            }
                             color="primary"
                             checked={isItemSelected}
                             inputProps={{
