@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import TodoTemplate from "../components/todo/TodoTemplate";
 
-type Props = {}
+type Props = {};
 
 const Todo = (props: Props) => {
   return (
-    <div>Todo</div>
-  )
-}
+    <>
+      <TodoTemplate />
+    </>
+  );
+};
 
-export default Todo
+export default Todo;

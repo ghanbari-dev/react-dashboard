@@ -13,7 +13,7 @@ import {
   Stacked,
   Pyramid,
   Customers,
-  Kanban,
+  Todo,
   Line,
   Area,
   Bar,
@@ -30,33 +30,22 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div className="flex relative dark:bg-black">
-          <div className="fixed right-4 bottom-4">
-            <Tooltip title="Settings" placement="top" arrow>
-              <IconButton color="primary">
-                <Settings className="text-5xl" />
-              </IconButton>
-            </Tooltip>
-          </div>
-
+        <div className="flex relative dark:bg-black min-w-screen max-w-screen min-h-screen max-h-screen overflow-hidden">
           <div
-            className={`w-72 fixed dark:bg-gray-500 bg-white ${
-              !activeMenu && "hidden"
-            }`}
+            className={
+              "w-72 dark:bg-gray-500 bg-white flex-shrink-0" +
+              (!activeMenu ? " hidden" : "")
+            }
           >
             <Sidebar />
           </div>
 
-          <div
-            className={`dark:bg-slate-50 bg-slate-50 min-h-screen w-full ${
-              activeMenu ? "md:ml-72" : "flex-2"
-            }`}
-          >
-            <div className="fixed md:static bg-slate-50 dark:bg-slate-800 w-full">
+          <div className="dark:bg-slate-50 bg-slate-50 min-h-screen flex-1 flex flex-col overflow-hidden relative">
+            <div className="bg-slate-50 dark:bg-slate-800 z-50">
               <Navbar />
             </div>
 
-            <div>
+            <div className="overflow-auto z-10 flex-1">
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Ecommerce />} />
@@ -68,7 +57,7 @@ function App() {
                 <Route path="/customers" element={<Customers />} />
 
                 {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
+                <Route path="/Todo" element={<Todo />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/color-picker" element={<ColorPicker />} />
@@ -85,6 +74,13 @@ function App() {
               </Routes>
             </div>
           </div>
+        </div>
+        <div className="fixed right-4 bottom-4">
+          <Tooltip title="Settings" placement="top" arrow>
+            <IconButton color="primary">
+              <Settings className="text-5xl" />
+            </IconButton>
+          </Tooltip>
         </div>
       </BrowserRouter>
     </div>

@@ -1,5 +1,5 @@
 export { default as Ecommerce } from './Ecommerce';
-export { default as Kanban } from './Todo';
+export { default as Todo } from './Todo';
 export { default as Orders } from './Orders';
 export { default as Employees } from './Employees';
 export { default as Editor } from './Editor';
